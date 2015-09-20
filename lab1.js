@@ -59,6 +59,12 @@ assert(1 === 2, 'this is an example of a failing assertion. 1 does not equal 2.'
 
 //your code goes here
 
+var tigerInSeattle = true;
+var cobraInSeattle = false;
+
+assert(tigerInSeattle, 'there are tigers in Seattle --  this assert will pass');
+assert(cobraInSeattle, 'there are no cobras in Seattle -- this assert will fail');
+
 /* ========================================================================
 ----------------- Meerkats (20 points total)-------------------------------
 ===========================================================================
@@ -79,10 +85,26 @@ var sentence2 = 'Come over here so you can scratch my belly.';
 
 // your code goes here
 
+var arr1 = sentence1.split(' ');
+sentence1 = '';
+for (var i = 0; i < arr1.length; i++) {
+  sentence1 += 'chirp ';
+}
+sentence1 = sentence1.trim() + '.';
+
 // TODO: part #2: use a while or do-while loop to replace the words in sentence 2
 // with 'chirp' (10 points)
 
 // your code goes here
+var arr2 = sentence2.split(' ');
+sentence2 = '';
+var i = 0;
+do {
+  sentence2 += 'chirp ';
+  i++;
+}
+while (i < arr2.length);
+sentence2 = sentence2.trim() + '.';
 
 // Leave these assertions as-is! If they pass, your code works.
 assert(sentence1 === 'chirp chirp chirp.', 'sentence 1 should have 3 chirps');
@@ -105,6 +127,7 @@ var nextAnimal;
 // Assign one of your favorite animals to nextAnimal using Math.random() to pick
 
 // your code goes here
+var nextAnimal = favoriteAnimals[Math.floor(Math.random() * 4)];
 
 assert(nextAnimal, 'assign something to nextAnimal');
 
@@ -134,6 +157,16 @@ var tooHungryDay;
 */
 
 // your code goes here
+var totalMeals = 0;
+for (var day = 1; day <= mealsPerDay.length; day++) {
+  totalMeals += mealsPerDay[(day - 1)];
+  var avgMealsPerDay = totalMeals / (day);
+  if (avgMealsPerDay < 4) {
+    tooHungryDay = day;
+    // console.log(day);
+    break;
+  }
+}
 
 assert(tooHungryDay, 'remember to assign the answer to tooHungryDay');
 assert(tooHungryDay < 10, 'the lion is too hungry before the end of the array');
